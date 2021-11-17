@@ -1,0 +1,15 @@
+C:\github\LoginEncryp\bin\Debug\net6.0\LoginEncryp.exe
+C:\github\LoginEncryp\bin\Debug\net6.0\LoginEncryp.deps.json
+C:\github\LoginEncryp\bin\Debug\net6.0\LoginEncryp.runtimeconfig.json
+C:\github\LoginEncryp\bin\Debug\net6.0\LoginEncryp.dll
+C:\github\LoginEncryp\bin\Debug\net6.0\ref\LoginEncryp.dll
+C:\github\LoginEncryp\bin\Debug\net6.0\LoginEncryp.pdb
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.csproj.AssemblyReference.cache
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.GeneratedMSBuildEditorConfig.editorconfig
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.AssemblyInfoInputs.cache
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.AssemblyInfo.cs
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.csproj.CoreCompileInputs.cache
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.dll
+C:\github\LoginEncryp\obj\Debug\net6.0\ref\LoginEncryp.dll
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.pdb
+C:\github\LoginEncryp\obj\Debug\net6.0\LoginEncryp.genruntimeconfig.cache
