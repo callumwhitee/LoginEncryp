@@ -10,8 +10,11 @@ class Program
     static Hash hasher = new Hash();
     public static void Main(string[] args)
     {
+        Console.Clear(); 
+        // var a = hasher.Verify("abc", "$HASH$10000$Nt5xVUa8X9/7YQErB/V8VScoF9DjqaEkY/I1MHWlds1C8Eea");
+        // Console.WriteLine(a);
+
         bool loggedOut = true;
-        ReadInCsv();
         while(loggedOut)
         {
             if(Login())
@@ -24,6 +27,7 @@ class Program
 
     static bool Login()
     {
+        ReadInCsv();
         Console.Clear();
         Console.WriteLine("Please Enter Your Username");
         Console.Write("> ");
@@ -34,31 +38,20 @@ class Program
 
         for(int i = 0; i < userDetails.GetLength(0); i++)
         {
-            if(enteredUsername == userDetails[i,0])
+            if(  (enteredUsername == userDetails[i,0]) && (hasher.Verify(enteredPassword, userDetails[i,1])))
             {
                 if(hasher.Verify(enteredPassword, userDetails[i,1]))
                 {
-                    Console.WriteLine("You Have Correctly Entered Your Password");
+                    Console.WriteLine("You Have Entered Your Correct Details");
+                    Thread.Sleep(1000);
                     return true;
                 }
-                else
-                {
-                    Console.WriteLine("You Have Entered An Incorrect Login");
-                    Thread.Sleep(750);
-                    Console.WriteLine("Please Retry");
-                    Thread.Sleep(2000);
-                    return false;
-                }
-            }
-            else
-            {
-                Console.WriteLine("You Have Entered An Incorrect Login");
-                Thread.Sleep(750);
-                Console.WriteLine("Please Retry");
-                Thread.Sleep(2000);
-                return false;
+                
             }
         }
+        Console.WriteLine("You Have Not Entered A Correct Username Or Password.");
+        Console.WriteLine("Please Try Again");
+        Thread.Sleep(1750);
         return false;
     }
 
@@ -67,8 +60,51 @@ class Program
     static void MainMenu()
     {
         Console.Clear();
-        Console.WriteLine("Hello WOrld");
+        Console.WriteLine("What Would You Like To Do?");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("New Login");
+        Thread.Sleep(500);
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("> ");
+        string answer = Console.ReadLine().ToLower();
+        if(answer == "new login")
+        {
+            NewLogin();
+        }
     }
+
+
+
+
+    static void NewLogin()
+    {
+        Console.Clear();
+        Console.WriteLine("Enter Your New Username");
+        Console.Write("> ");
+        string newUsername = Console.ReadLine();
+        Console.WriteLine("Enter Your New Password");
+        Console.Write("> ");
+        string newPassword = Console.ReadLine();
+        Console.Clear();
+        string hashedPassword = hasher.hash(newPassword);
+        try
+        {
+            using(StreamWriter file = new StreamWriter(@path, true))
+            {
+                file.WriteLine();
+                file.Write(newUsername + "," + hashedPassword);
+            }
+            Console.WriteLine("Successfully added the new details");
+            Thread.Sleep(1500);
+            MainMenu();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        
+    }
+
 
 
 
