@@ -3,6 +3,28 @@ using System.IO;
 class Program
 {
 
+    /*
+
+        LOGIN METHOD
+        uses a csv file to store user data with
+        the user password encryped for security
+
+        takes the csv file and makes it into a 2d array
+
+        once logged in, allows user to add a new login 
+        by using streamwriter to write to the csv file
+
+
+    */
+
+
+
+    // TODO: add try catches for user error
+
+
+    // INITIAL USER NAME AND PASSWORD ARE 
+    // root , password
+
     static string[,] userDetails;
 
     static string path = "userDetails.csv";
@@ -11,8 +33,6 @@ class Program
     public static void Main(string[] args)
     {
         Console.Clear(); 
-        // var a = hasher.Verify("abc", "$HASH$10000$Nt5xVUa8X9/7YQErB/V8VScoF9DjqaEkY/I1MHWlds1C8Eea");
-        // Console.WriteLine(a);
 
         bool loggedOut = true;
         while(loggedOut)
