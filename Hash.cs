@@ -1,14 +1,14 @@
 using System.Security.Cryptography;
-
-
+using System;
 
     class Hash
     {
         private const int SaltSize = 16;
         private const int HashSize = 20;
 
-        public string hash(string password, int iterations)
+        public string hash(string password)
         {
+            int iterations = 10000;
             // Create salt
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[SaltSize]);
@@ -26,12 +26,12 @@ using System.Security.Cryptography;
             var base64Hash = Convert.ToBase64String(hashBytes);
 
             // Format hash with extra information
-            return string.Format("$MYHASH$V1${0}${1}", iterations, base64Hash);
+            return string.Format("$HASH${0}${1}", iterations, base64Hash);
         }
 
          public static bool IsHashSupported(string hashString)
         {
-            return hashString.Contains("$MYHASH$V1$");
+            return hashString.Contains("$HASH$");
         }
 
         public bool Verify(string password, string hashedPassword)
@@ -43,7 +43,7 @@ using System.Security.Cryptography;
             }
 
             // Extract iteration and Base64 string
-            var splittedHashString = hashedPassword.Replace("$MYHASH$V1$", "").Split('$');
+            var splittedHashString = hashedPassword.Replace("$HASH$", "").Split('$');
             var iterations = int.Parse(splittedHashString[0]);
             var base64Hash = splittedHashString[1];
 
